@@ -1,0 +1,110 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'navigation.html' %}
+
+ <marquee style="font-size:20px; font-family:'arial'; background-color:orange; margin-top:5px;font-e">
+    Welcome to the Job Portal We provide you the best suitable jobs According to your Skills and interest Areas..
+</marquee>
+
+<script>
+    function checkpass()
+    {
+    if(document.signup.pwd.value!=document.signup.cpwd.value)
+    {
+    alert('Password and Confirm Password are not same');
+    document.signup.cpwd.focus();
+    return false;
+    }
+    return true;
+    }
+</script>
+
+<form method="post" name="signup" onsubmit="return checkpass()" class="container mt-4" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="fname" placeholder="Enter First Name">
+
+        </div>
+        <div class="form-group col-md-6">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lname" placeholder="Enter Last Name">
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6 mt-3">
+            <label>Contact</label>
+            <input type="text" class="form-control" name="contact" placeholder="Enter Contact Number">
+
+        </div>
+        <div class="form-group col-md-6 mt-3">
+            <label>Email</label>
+            <input type="email" required class="form-control" name="email" placeholder="Enter Email">
+
+        </div>
+
+    </div>
+
+     <div class="row">
+        <div class="form-group col-md-6 mt-3">
+            <label>Password</label>
+            <input type="password" required class="form-control" name="pwd" placeholder="Enter Password">
+
+        </div>
+        <div class="form-group col-md-6 mt-3">
+            <label>Confirm Password</label>
+            <input type="password" required class="form-control" name="cpwd" placeholder="Enter Password Again">
+
+        </div>
+
+    </div>
+
+         <div class="row">
+        <div class="form-group col-md-6 mt-3">
+            <div style="border:1px solid lightgrey; padding:5px; border-radius:6px">
+            <label>Gender</label>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="gender" class="custom-control-input" value="Male">
+                <label class="custom-control-label" for="customRadioInline1">Male</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="gender" class="custom-control-input" value="Female">
+                <label class="custom-control-label" for="customRadioInline2">Female</label>
+            </div>
+
+        </div>
+            </div>
+        <div class="form-group col-md-6 mt-3">
+            <label>Upload Image</label>
+            <input type="file" required class="form-control" name="image">
+
+        </div>
+
+    </div>
+
+    <p><input type="submit" value="Create Account" class="btn btn-warning mt-3">
+        <input type="reset" value="Cancel" class="btn btn-warning mt-3">
+
+    </p>
+
+
+</form>
+
+<h3 style="margin-left:7%">
+    <p>
+    {% if data %}
+        {{data}}
+    {% endif %}
+</p>
+</h3>
+
+
+{% include 'footer.html' %}
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'admin_navigation.html' %}
+
+<div class="col-9" style="border:2px solid black; margin-left:12%;">
+    <form method="post" class="form-group" style="margin-top:2%;">
+        {% csrf_token %}
+        <h1 style="margin-left:35%">RECRUITER STATUS</h1>
+        <p>Recruiter Name<input type="text" name="username" readonly class="form-control" value="{{recruiter.user.first_name}} {{recruiter.user.last_name}}"></p>
+        <p>Status
+            <select class="form-control" name="status">
+                <option value="Accept">Accept</option>
+                <option value="Reject">Reject</option>
+            </select>
+        </p>
+        <p style="color:white"><button type="submit" style="margin-left:45%; background-color:Grey; padding:5px;">Change Status</button></p>
+    </form>
+</div>
+
+{% ifequal error "no" %}
+<script>
+    alert("Status Changed Successfully");
+    window.location=('{% url 'recruiter_all' %}')
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert("Something Went Wrong! Try Again..");
+    window.location=('{% url 'recruiter_pending' %}')
+</script>
+{% endifequal %}
+
+
+{% include 'footer.html' %}
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'User_navigation.html' %}
+
+<div class="container my-5 pb-3 shadow-lg">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row">
+            <label class="font-weight-bold mt-3">Upload Resume</label>
+            <input type="file" class="form-control" required name="resume">
+
+        </div>
+        <div>
+            <input type="submit" value="Upload" class="btn btn-danger mt-3">
+        </div>
+    </form>
+</div>
+
+{% ifequal error "close" %}
+<script>
+    alert("Application for this Job is Closed ");
+    window.location=('{% url 'user_job_list' %}')
+</script>
+{% endifequal %}
+
+{% ifequal error "notopen" %}
+<script>
+    alert("Application for this job is not open yet");
+    window.location=('{% url 'user_job_list' %}')
+</script>
+{% endifequal %}
+
+{% ifequal error "done" %}
+<script>
+    alert("You Applied Successfully for this job ");
+    window.location=('{% url 'user_job_list' %}')
+</script>
+{% endifequal %}
+
+{% include 'footer.html' %}
+
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'recruiter_navigation.html' %}
+
+<style>
+    tr{text-align: center}
+</style>
+
+
+ <div class="container my-3">
+        <div class="row">
+        <div class="col-lg-12 col-md-8 col-sm-8 text1">
+            <table class="table table-hover " id="example">
+                <thead>
+                <tr class="thesd-dark">
+                    <th>S.No.</th>
+                    <th>Full Name</th>
+                    <th>Email Id</th>
+                    <th>Contact</th>
+                    <th>Job Title</th>
+                    <th>Company</th>
+                    <th>Logo</th>
+                    <th>Apply Date</th>
+                    <th>Resume</th>
+                    <th>Action</th>
+                </thead>
+
+                <tbody>
+                {% for i in data %}
+                {% ifequal request.user.id i.job.recruiter.user.id %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td> {{i.student.user.first_name}} {{i.student.user.last_name}}</td>
+                    <td>{{i.student.user.username}}</td>
+                    <td>{{i.student.mobile}}</td>
+                    <td>{{i.job.title}}</td>
+                    <td>{{i.job.recruiter.company}}</td>
+                    <td><img src="{{i.job.image.url}}" style="width:50px; height:50px; border-radius:50%"></td>
+                    <td>{{i.applydate}}</td>
+                    <td><a href="{{i.resume.url}}">Download Resume</a></td>
+                    <td>
+                        <a class="btn btn-danger btn-sm"href="#">Reject Application</a>
+                    </td>
+
+
+
+                </tr>
+                {% endifequal %}
+                {% endfor %}
+                </tbody>
+            </table>
+    </div>
+ </div>
+ </div>
+
+{% include 'footer.html' %}
+
+{% endblock %}

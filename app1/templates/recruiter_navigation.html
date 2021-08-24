@@ -1,0 +1,81 @@
+<html>
+<head>
+    {% load static %}
+    <title>Job Portal</title>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"/>
+    <link href="{% static 'css/all.css' %}" rel="stylesheet" type="text/css">
+    <script type="text/Javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/Javascript" src="{% static 'js/jquery.js' %}"></script>
+    <title>Navbar</title>
+
+    <script>
+        $(document).ready(function(e){
+            $("#b1").click(function(){
+                $("#item").slideToggle();
+            });
+
+        });
+    </script>
+</head>
+
+
+
+<body>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="margin-top:2px">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/header.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/header2.png' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/header1.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+    <nav class="navbar navbar-dark navbar-expand-md bg-dark" style="margin-top:3px">
+        <a href="#" class="navbar-brand text-light " style="margin-left:15px">Job Portal</a>
+        <button class="navbar-toggler">
+            <span class="navbar-toggler-icon" id="b1"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="item">
+            <ul class="navbar-nav text-center m1-5 mr-auto">
+                <li class="nav-item" style="margin-right:10px"><a class="nav-link text-warning"  href="{% url 'recruiter_home' %}"><i class="fas fa-home"></i>Home</a></li>
+                <li class="nav-item" style="margin-right:10px"><a class="nav-link text-warning"  href="{% url 'add_job' %}"><i class="fas fa-plus-circle"></i>Add Job</a></li>
+                <li class="nav-item" style="margin-right:10px"><a class="nav-link text-warning"  href="{% url 'job_list' %}"><i class="fas fa-list-ul"></i>Job List</a></li>
+                <li class="nav-item" style="margin-right:10px"><a class="nav-link text-warning"  href="{% url 'candidates_applied' %}"><i class="fas fa-users"></i>Candidates Applied</a></li>
+                <li class="nav-item" style="margin-right:10px"><a class="nav-link text-warning"  href="{% url 'change_password_recruiter' %}"><i class="fas fa-unlock-alt"></i>Change Password</a></li>
+                <li class="nav-item" style="margin-right:10px"><a class="nav-link text-warning"  href="{% url 'recruiter_logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                <a href="#" class="navbar-brand text-success "><i class="far fa-user"></i>  Welcome->  {{request.user.first_name}} {{request.user.last_name}}</a>
+
+            </ul>
+        </div>
+    </nav>
+</body>
+
+
+
+
+
+</html>

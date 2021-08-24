@@ -1,0 +1,33 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'navigation.html' %}
+
+
+ <marquee style="font-size:20px; font-family:'arial'; background-color:orange; margin-top:5px;font-e">
+    Welcome to the Job Portal We provide you the best suitable jobs According to your Skills and interest Areas..
+</marquee>
+
+<div class="col-9"  style="border:2px solid black; margin-left:12%">
+    <form method="post" class="form-group" style="margin-top:2%">
+        {% csrf_token %}
+        <h1 style="margin-left:37%">USER LOGIN</h1>
+        <p>Email<input type="email" name="email" required class="form-control"></p>
+        <p>Password<input type="password" name="password" class="form-control"></p>
+        <p><button class="btn btn-warning btn-block" type="submit" style="margin-left:40%">Login</button>
+           <a href="{% url 'user_signup' %}" class="btn btn-warning" style="margin-left:5px">Signup</a>
+        </p>
+
+    </form>
+</div>
+
+<h5 style="margin-left:12%; color:red"><p>
+{% if data %}
+{{data}}
+{% endif %}
+</p></h5>
+
+{% include 'footer.html' %}
+
+{% endblock %}

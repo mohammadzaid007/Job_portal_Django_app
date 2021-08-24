@@ -1,0 +1,20 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'navigation.html' %}
+
+<marquee style="font-size:20px; font-family:'arial'; background-color:orange; margin-top:5px;font-e">
+    Welcome to the Job Portal We provide you the best suitable jobs According to your Skills and interest Areas..
+</marquee>
+<div class="container-fluid" style="margin-top:10px">
+    <img src="{% static 'images/background.jpg' %}" style="height:450px;width:100%; filter:blur(3px)">
+     <h1 class="text text-warning" style="position:absolute; top:58%; width:100%; text-align:center">You Can Contact Us</h1>
+    <h6 style="position:absolute; top:68%; color:white; width:60%; left:20%; text-align:center">EMAIL: 007zaid@gmail.com<br>CONTACT: +91 9785575657<br>ADDRESS: Borkhera Kota Rajasthan<br>(324001)</h6>
+
+</div>
+
+
+{% include 'footer.html' %}
+
+{% endblock %}
